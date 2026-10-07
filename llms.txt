@@ -1,0 +1,31 @@
+# QuickPDF
+
+> Privacy-first PDF utilities that run entirely in the user's browser.
+> No accounts, no uploads, no server-side storage.
+
+Site: https://quickpdf.info
+Contact: hello@quickpdf.info (replace with your address)
+
+## Tools
+
+- Merge PDF (/merge.html): combine multiple PDFs into one.
+- Split PDF (/split.html): extract page ranges into a new PDF.
+- Compress PDF (/compress.html): rasterise pages to JPEG to reduce size. Text becomes non-selectable.
+- OCR PDF (/ocr.html): English text extraction using Tesseract.js WebAssembly.
+- Sign PDF (/sign.html): draw, type, or upload a signature. Signatures stored in browser IndexedDB.
+- Images to PDF (/images-to-pdf.html): JPG, PNG, and WebP converted to a single PDF.
+- PDF Information (/pdf-info.html): page count, metadata, page dimensions.
+
+## Guarantees
+
+- No file content leaves the device. All processing uses JavaScript and WebAssembly in the browser.
+- No accounts, no cookies for tracking, no analytics.
+- Works offline after first load (service worker).
+- Password-protected PDFs are rejected deliberately.
+
+## Limits
+
+- Compression quality is below Adobe Acrobat / Ghostscript.
+- OCR accuracy depends on scan quality. English only in v1.
+- Files over ~150 MB may exhaust browser memory.
+- PDF forms, embedded JavaScript, 3D content, and file attachments are not preserved.

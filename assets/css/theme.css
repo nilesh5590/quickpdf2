@@ -1,0 +1,80 @@
+/* ============================================================
+   themes.css — Color tokens for light + dark.
+   Theme is applied via [data-theme="..."] on <html>.
+   If no attribute is set, we fall through to prefers-color-scheme.
+   ============================================================ */
+
+/* Light theme — also the default if the OS reports no preference. */
+:root,
+:root[data-theme="light"] {
+  --bg:            #ffffff;
+  --bg-elev:       #f5f5f7;
+  --surface:       #ffffff;
+  --surface-hover: #f5f5f7;
+  --border:        #d2d2d7;
+  --border-strong: #86868b;
+  --text:          #1d1d1f;
+  --text-muted:    #6e6e73;
+  --accent:        #0071e3;
+  --accent-hover:  #0077ed;
+  --accent-soft:   rgba(0, 113, 227, 0.1);
+  --danger:        #d70015;
+  --danger-soft:   rgba(215, 0, 21, 0.1);
+  --success:       #1d8348;
+  --success-soft:  rgba(29, 131, 72, 0.1);
+  --warning:       #b25000;
+  --warning-soft:  rgba(178, 80, 0, 0.1);
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md:     0 4px 14px rgba(0, 0, 0, 0.08);
+  color-scheme:    light;
+}
+
+/* Dark theme. */
+:root[data-theme="dark"] {
+  --bg:            #000000;
+  --bg-elev:       #1d1d1f;
+  --surface:       #1d1d1f;
+  --surface-hover: #2a2a2d;
+  --border:        #424245;
+  --border-strong: #6e6e73;
+  --text:          #f5f5f7;
+  --text-muted:    #a1a1a6;
+  --accent:        #2997ff;
+  --accent-hover:  #47a8ff;
+  --accent-soft:   rgba(41, 151, 255, 0.15);
+  --danger:        #ff453a;
+  --danger-soft:   rgba(255, 69, 58, 0.15);
+  --success:       #30d158;
+  --success-soft:  rgba(48, 209, 88, 0.15);
+  --warning:       #ff9f0a;
+  --warning-soft:  rgba(255, 159, 10, 0.15);
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:     0 4px 14px rgba(0, 0, 0, 0.5);
+  color-scheme:    dark;
+}
+
+/* If the user has not chosen a theme yet, follow the OS. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg:            #000000;
+    --bg-elev:       #1d1d1f;
+    --surface:       #1d1d1f;
+    --surface-hover: #2a2a2d;
+    --border:        #424245;
+    --border-strong: #6e6e73;
+    --text:          #f5f5f7;
+    --text-muted:    #a1a1a6;
+    --accent:        #2997ff;
+    --accent-hover:  #47a8ff;
+    --accent-soft:   rgba(41, 151, 255, 0.15);
+    --danger:        #ff453a;
+    --danger-soft:   rgba(255, 69, 58, 0.15);
+    --success:       #30d158;
+    --success-soft:  rgba(48, 209, 88, 0.15);
+    --warning:       #ff9f0a;
+    --warning-soft:  rgba(255, 159, 10, 0.15);
+    --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md:     0 4px 14px rgba(0, 0, 0, 0.5);
+    color-scheme:    dark;
+  }
+}

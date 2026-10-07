@@ -1,0 +1,293 @@
+ ============================================================
+   components.css — Reusable UI pieces.
+   Nothing page-specific lives here; only primitives.
+   ============================================================ 
+
+ ---------- Header ---------- 
+.site-header {
+  position sticky;
+  top 0;
+  z-index 50;
+  background color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter saturate(180%) blur(20px);
+  -webkit-backdrop-filter saturate(180%) blur(20px);
+  border-bottom 1px solid var(--border);
+}
+.site-header .container {
+  display flex;
+  align-items center;
+  justify-content space-between;
+  gap var(--space-4);
+  height 56px;
+}
+
+.logo {
+  display inline-flex;
+  align-items center;
+  gap var(--space-2);
+  font-weight 600;
+  font-size 1.0625rem;
+  letter-spacing -0.01em;
+  color var(--text);
+  text-decoration none;
+}
+.logohover { text-decoration none; color var(--text); }
+.logo span { color var(--accent); }
+
+.site-nav {
+  display flex;
+  align-items center;
+  gap var(--space-4);
+  font-size 0.875rem;
+}
+.site-nav a { color var(--text-muted); }
+.site-nav ahover { color var(--text); text-decoration none; }
+
+ ---------- Theme toggle ---------- 
+.theme-toggle {
+  width 36px; height 36px;
+  display grid; place-items center;
+  background transparent;
+  border 1px solid var(--border);
+  border-radius var(--radius-full);
+  cursor pointer;
+  color var(--text);
+  transition background var(--transition), border-color var(--transition);
+}
+.theme-togglehover { background var(--surface-hover); border-color var(--border-strong); }
+.theme-toggle svg { width 18px; height 18px; }
+.theme-toggle .icon-sun { display none; }
+[data-theme=dark] .theme-toggle .icon-sun { display block; }
+[data-theme=dark] .theme-toggle .icon-moon { display none; }
+
+ ---------- Footer ---------- 
+.site-footer {
+  border-top 1px solid var(--border);
+  padding var(--space-8) 0;
+  margin-top var(--space-16);
+  color var(--text-muted);
+  font-size 0.875rem;
+}
+.site-footer .container {
+  display flex;
+  flex-wrap wrap;
+  gap var(--space-4);
+  justify-content space-between;
+}
+.site-footer nav { display flex; gap var(--space-4); flex-wrap wrap; }
+
+ ---------- Hero ---------- 
+.hero {
+  text-align center;
+  padding var(--space-16) 0 var(--space-12);
+}
+.hero h1 { margin-bottom var(--space-4); }
+.hero p {
+  color var(--text-muted);
+  font-size 1.125rem;
+  max-width 55ch;
+  margin 0 auto var(--space-6);
+}
+
+ ---------- Tool grid ---------- 
+.tool-grid {
+  display grid;
+  grid-template-columns repeat(auto-fit, minmax(260px, 1fr));
+  gap var(--space-4);
+  margin var(--space-8) 0;
+}
+
+.tool-card {
+  display block;
+  background var(--surface);
+  border 1px solid var(--border);
+  border-radius var(--radius-lg);
+  padding var(--space-6);
+  color var(--text);
+  text-decoration none;
+  transition transform var(--transition),
+              border-color var(--transition),
+              box-shadow var(--transition);
+}
+.tool-cardhover {
+  transform translateY(-2px);
+  border-color var(--accent);
+  box-shadow var(--shadow-md);
+  text-decoration none;
+  color var(--text);
+}
+.tool-card h3 { margin-bottom var(--space-2); }
+.tool-card p { color var(--text-muted); font-size 0.9375rem; margin 0; }
+
+.tool-card-icon {
+  width 40px; height 40px;
+  display grid; place-items center;
+  border-radius var(--radius-md);
+  background var(--accent-soft);
+  color var(--accent);
+  margin-bottom var(--space-4);
+}
+
+ ---------- Buttons ---------- 
+.btn {
+  display inline-flex;
+  align-items center;
+  justify-content center;
+  gap var(--space-2);
+  padding 0.625rem 1.25rem;
+  font-size 0.9375rem;
+  font-weight 500;
+  border-radius var(--radius-full);
+  border 1px solid transparent;
+  background var(--accent);
+  color #fff;
+  cursor pointer;
+  transition background var(--transition), transform var(--transition), opacity var(--transition);
+  text-decoration none;
+}
+.btnhovernot(disabled) { background var(--accent-hover); text-decoration none; color #fff; }
+.btnactivenot(disabled) { transform scale(0.98); }
+.btndisabled { opacity 0.4; cursor not-allowed; }
+
+.btn-secondary {
+  background transparent;
+  color var(--text);
+  border-color var(--border-strong);
+}
+.btn-secondaryhovernot(disabled) {
+  background var(--surface-hover);
+  color var(--text);
+}
+
+.btn-lg { padding 0.875rem 1.75rem; font-size 1rem; }
+
+ ---------- Dropzone ---------- 
+.dropzone {
+  border 2px dashed var(--border);
+  border-radius var(--radius-lg);
+  padding var(--space-12) var(--space-6);
+  text-align center;
+  cursor pointer;
+  background var(--surface);
+  transition border-color var(--transition), background var(--transition);
+}
+.dropzonehover,
+.dropzone.is-dragover {
+  border-color var(--accent);
+  background var(--accent-soft);
+}
+.dropzone-icon { color var(--accent); margin-bottom var(--space-4); }
+.dropzone p { margin 0 0 var(--space-2); font-weight 500; }
+.dropzone small { color var(--text-muted); }
+
+ ---------- Progress bar ---------- 
+.progress {
+  width 100%;
+  height 6px;
+  background var(--bg-elev);
+  border-radius var(--radius-full);
+  overflow hidden;
+  margin var(--space-3) 0;
+}
+.progress-bar {
+  height 100%;
+  background var(--accent);
+  width 0%;
+  transition width 200ms var(--ease);
+}
+
+ ---------- Alert ---------- 
+.alert {
+  padding var(--space-3) var(--space-4);
+  border-radius var(--radius-md);
+  border 1px solid var(--border);
+  background var(--surface);
+  margin var(--space-4) 0;
+  display flex;
+  gap var(--space-3);
+  align-items flex-start;
+  font-size 0.9375rem;
+}
+.alert-success { background var(--success-soft); border-color var(--success); color var(--success); }
+.alert-error   { background var(--danger-soft);  border-color var(--danger);  color var(--danger); }
+.alert-warning { background var(--warning-soft); border-color var(--warning); color var(--warning); }
+.alert-info    { background var(--accent-soft);  border-color var(--accent);  color var(--accent); }
+
+ ---------- File list ---------- 
+.file-list { list-style none; padding 0; margin var(--space-4) 0; }
+.file-list li {
+  display flex;
+  align-items center;
+  gap var(--space-3);
+  padding var(--space-3) var(--space-4);
+  background var(--surface);
+  border 1px solid var(--border);
+  border-radius var(--radius-md);
+  margin-bottom var(--space-2);
+}
+.file-list .name { flex 1; min-width 0; overflow hidden; text-overflow ellipsis; white-space nowrap; }
+.file-list .size { color var(--text-muted); font-size 0.8125rem; }
+.file-list button {
+  width 32px; height 32px;
+  display grid; place-items center;
+  background transparent;
+  border 1px solid var(--border);
+  border-radius var(--radius-sm);
+  cursor pointer;
+  color var(--text-muted);
+}
+.file-list buttonhovernot(disabled) { background var(--surface-hover); color var(--text); }
+.file-list buttondisabled { opacity 0.3; cursor not-allowed; }
+
+ ---------- Definition list (PDF Info) ---------- 
+.info-grid {
+  display grid;
+  grid-template-columns minmax(140px, auto) 1fr;
+  gap var(--space-2) var(--space-6);
+  background var(--surface);
+  border 1px solid var(--border);
+  border-radius var(--radius-md);
+  padding var(--space-5);
+  margin var(--space-4) 0;
+}
+.info-grid dt { color var(--text-muted); font-size 0.875rem; }
+.info-grid dd { margin 0; font-variant-numeric tabular-nums; }
+
+ ---------- Modal ---------- 
+.modal-backdrop {
+  position fixed; inset 0;
+  background rgba(0, 0, 0, 0.5);
+  display grid; place-items center;
+  padding var(--space-4);
+  z-index 100;
+}
+.modal {
+  background var(--surface);
+  border 1px solid var(--border);
+  border-radius var(--radius-lg);
+  padding var(--space-6);
+  max-width 480px;
+  width 100%;
+  box-shadow var(--shadow-md);
+}
+
+ ---------- FAQ ---------- 
+.faq details {
+  background var(--surface);
+  border 1px solid var(--border);
+  border-radius var(--radius-md);
+  padding var(--space-4) var(--space-5);
+  margin-bottom var(--space-3);
+}
+.faq summary {
+  cursor pointer;
+  font-weight 500;
+  list-style none;
+  display flex;
+  justify-content space-between;
+  align-items center;
+}
+.faq summary-webkit-details-marker { display none; }
+.faq summaryafter { content ＋; color var(--text-muted); }
+.faq details[open] summaryafter { content −; }
+.faq details  p { margin-top var(--space-3); color var(--text-muted); }

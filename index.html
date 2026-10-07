@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>QuickPDF — Free Private PDF Tools That Run in Your Browser</title>
+<meta name="description" content="Merge, split, compress, sign, and OCR PDFs without uploading them. Every tool runs entirely in your browser — no accounts, no servers, no file storage.">
+<link rel="canonical" href="https://quickpdf.info/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quickpdf.info/">
+<meta property="og:title" content="QuickPDF — Private PDF Tools">
+<meta property="og:description" content="Free PDF utilities that never upload your files. Everything runs in your browser.">
+<meta property="og:image" content="https://quickpdf.info/assets/og.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QuickPDF — Private PDF Tools">
+<meta name="twitter:description" content="Free PDF utilities that never upload your files.">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0071e3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+<!-- Stylesheets — order matters -->
+<link rel="stylesheet" href="/assets/css/themes.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/utilities.css">
+
+<!-- Theme pre-paint. Must stay inline and small. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('quickpdf:theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<!-- JSON-LD: helps Google + LLM crawlers understand the site. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QuickPDF",
+  "url": "https://quickpdf.info/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Privacy-first PDF utilities that run entirely in the browser.",
+  "featureList": [
+    "Merge PDF", "Split PDF", "Compress PDF", "OCR PDF (English)",
+    "Sign PDF", "Images to PDF", "PDF Information"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/" aria-label="QuickPDF home">Quick<span>PDF</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/#tools">Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <span class="theme-toggle-slot"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+
+    <section class="hero">
+      <h1>PDF tools that never see your files</h1>
+      <p>Everything runs inside your browser. No uploads, no accounts, no server-side storage. Your documents stay on your device from start to finish.</p>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-heading">
+      <h2 id="tools-heading">All tools</h2>
+      <div class="tool-grid" id="tool-grid"><!-- filled by main.js --></div>
+    </section>
+
+    <!-- Static content for SEO and LLM crawlers. Not hidden behind JS. -->
+    <section class="prose mt-8" aria-labelledby="about-heading">
+      <h2 id="about-heading">How QuickPDF works</h2>
+      <p>QuickPDF is a collection of seven PDF utilities that run entirely inside your web browser. When you choose a file, it is read locally by JavaScript using the File API. All the work — parsing, merging, rendering, OCR — happens on your device. Nothing is transmitted to a server, because there is no server.</p>
+      <p>This matters for two reasons. First, privacy: sensitive documents like contracts, medical records, and IDs never leave your computer. Second, security: there is no database to breach, no log of what you uploaded, and no account to compromise.</p>
+      <p>QuickPDF is built on trusted open-source libraries. PDF parsing and manipulation use <strong>pdf-lib</strong>. PDF rendering and text extraction use <strong>pdfjs-dist</strong> from Mozilla. OCR uses <strong>Tesseract.js</strong>, the WebAssembly build of Google's Tesseract engine. All three have been audited and widely deployed.</p>
+
+      <h3>Known limits</h3>
+      <p>Client-side processing is not the same as desktop software. Compression in QuickPDF redraws each page as a JPEG rather than re-encoding the original content streams, so text in a compressed PDF is no longer selectable. OCR is English-only in this version and its accuracy depends heavily on scan quality. Very large PDFs (over roughly 100&nbsp;MB) may exhaust a phone's available memory. Password-protected PDFs are rejected deliberately — handling passwords would mean handling encryption keys, which is not something we want to do in a browser tab.</p>
+    </section>
+
+    <section class="faq mt-8" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+
+      <details>
+        <summary>Are my files uploaded anywhere?</summary>
+        <p>No. All processing happens in your browser using JavaScript and WebAssembly. You can verify this by opening your browser's developer tools, switching to the Network tab, and using any tool — you will see no requests carrying your file's contents.</p>
+      </details>
+
+      <details>
+        <summary>Is QuickPDF really free?</summary>
+        <p>Yes, with no accounts, no watermark, and no file limits imposed by us. The only limits are what your browser can handle.</p>
+      </details>
+
+      <details>
+        <summary>Can I use QuickPDF offline?</summary>
+        <p>Yes. After your first visit, the application shell is cached by a service worker, so the tools open even without a network connection. OCR needs to download English language data on first use, after which it is cached too.</p>
+      </details>
+
+      <details>
+        <summary>Why does compression look different from Adobe Acrobat?</summary>
+        <p>Acrobat uses decades of tuned heuristics and Ghostscript-based re-encoding. QuickPDF uses a browser-friendly approach: rasterise each page to a JPEG and rebuild the PDF. The result is usually smaller but loses text selectability. We state this clearly on the compression page so you can choose deliberately.</p>
+      </details>
+
+      <details>
+        <summary>Which browsers are supported?</summary>
+        <p>Any modern browser: Chrome, Edge, Safari, Firefox, and their mobile versions. WebAssembly is required for OCR; everything else works without it.</p>
+      </details>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span data-year></span> QuickPDF.info — All processing happens in your browser.</span>
+    <nav aria-label="Footer">
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

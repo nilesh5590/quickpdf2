@@ -1,0 +1,15 @@
+<!-- pdf-info.html: identical shell to merge.html. Body content: -->
+<section class="mt-8">
+  <h1>PDF Information</h1>
+  <p class="text-muted">See page count, metadata, and per-page dimensions without uploading the file.</p>
+</section>
+<section class="mt-6">
+  <div id="info-dropzone"></div>
+  <p id="info-alerts" class="mt-4"></p>
+  <div id="info-output"></div>
+</section>
+<section class="prose mt-8">
+  <h2>What you'll see</h2>
+  <p>QuickPDF reads the PDF's trailer, cross-reference table, and Info dictionary. That reveals the number of pages, the document title, author, subject, creator and producer strings, plus the creation and modification timestamps. Each page's width and height are reported in PDF points (72 points = 1 inch).</p>
+  <p>Encrypted PDFs are rejected before we attempt to read metadata, because the Info dictionary itself may be encrypted. Very large PDFs are parsed in the browser using pdf-lib, which loads the whole structure into memory — for files above ~100&nbsp;MB we recommend using a desktop tool instead.</p>
+</section>

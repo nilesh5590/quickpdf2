@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge PDF — Combine PDFs Free, No Upload | QuickPDF</title>
+<meta name="description" content="Merge multiple PDFs into one file. Free, private, and entirely browser-based. Your files never leave your device.">
+<link rel="canonical" href="https://quickpdf.info/merge.html">
+<meta property="og:title" content="Merge PDF — QuickPDF">
+<meta property="og:description" content="Combine PDFs into one file, entirely in your browser.">
+<meta property="og:url" content="https://quickpdf.info/merge.html">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/themes.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/utilities.css">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('quickpdf:theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Merge PDF — QuickPDF",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://quickpdf.info/merge.html"
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/" aria-label="QuickPDF home">Quick<span>PDF</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/#tools">Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <span class="theme-toggle-slot"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+
+    <section class="mt-8">
+      <h1>Merge PDF</h1>
+      <p class="text-muted">Combine two or more PDFs into a single file. Drag to reorder before merging. Everything happens on your device.</p>
+    </section>
+
+    <!-- Tool UI. IDs are referenced by assets/js/tools/merge.js -->
+    <section class="mt-6" aria-label="Merge tool">
+      <div id="merge-dropzone"></div>
+      <p id="merge-alerts" class="mt-4"></p>
+      <ul id="merge-file-list" class="file-list" aria-label="Files to merge"></ul>
+      <div class="flex gap-3 mt-4">
+        <button id="merge-btn" class="btn btn-lg" type="button" disabled>Merge PDFs</button>
+        <button id="merge-reset" class="btn btn-lg btn-secondary" type="button" hidden>Clear all</button>
+      </div>
+      <div id="merge-progress" class="mt-4"></div>
+      <div id="merge-output" class="mt-4"></div>
+    </section>
+
+    <!-- Static content for SEO / LLMs -->
+    <section class="prose mt-8">
+      <h2>How to merge PDFs with QuickPDF</h2>
+      <ol>
+        <li>Drop your PDFs onto the box above, or click it to browse. You can add them a few at a time.</li>
+        <li>Reorder with the arrow buttons — the merge runs in the order shown.</li>
+        <li>Click <strong>Merge PDFs</strong>. The combined file is created in your browser and offered as a download.</li>
+      </ol>
+      <p>Nothing is uploaded. If you open your browser's developer tools and watch the Network tab, you'll see zero outbound requests carrying your files.</p>
+
+      <h3>What merging keeps and loses</h3>
+      <p>Pages are copied byte-for-byte from the source documents, so text, images, vectors, and annotations all survive. Document-level metadata (title, author, producer) is reset on the merged file. Bookmarks and outlines are not preserved. Encrypted or password-protected PDFs are rejected at the door.</p>
+
+      <h3>Size guidance</h3>
+      <p>Files up to 25&nbsp;MB are processed instantly. Between 25 and 150&nbsp;MB you'll see a warning but the tool will still run. Above 150&nbsp;MB QuickPDF refuses, because browsers on typical hardware run out of memory before the merge completes.</p>
+    </section>
+
+    <section class="faq mt-8">
+      <h2>Merge FAQ</h2>
+      <details>
+        <summary>Can I merge PDFs on my phone?</summary>
+        <p>Yes. The tool is fully responsive. Large files may hit memory limits sooner on mobile than on desktop, so we recommend merging in smaller batches on phones.</p>
+      </details>
+      <details>
+        <summary>Does merging reduce quality?</summary>
+        <p>No. Pages are copied as-is from the source PDFs. Only the document wrapper and cross-reference table are rebuilt.</p>
+      </details>
+      <details>
+        <summary>Can I merge password-protected PDFs?</summary>
+        <p>Not currently. Handling encrypted files in the browser would require implementing PDF decryption, which we deliberately avoid.</p>
+      </details>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span data-year></span> QuickPDF.info</span>
+    <nav aria-label="Footer">
+      <a href="/about.html">About</a><a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a><a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/tools/merge.js"></script>
+</body>
+</html>
